@@ -13,24 +13,22 @@ provider "azurerm" {
 
 # Import the resource group
 resource "azurerm_resource_group" "imported" {
-  name     = "tf"
-  location = "centralindia"
+  name     = var.resource_group_name
+  location = var.location
 }
 
 # Import the virtual machine
 resource "azurerm_virtual_machine" "imported" {
-  name                = "terraform-machine"
+  name                = var.vm_name
   location            = azurerm_resource_group.imported.location
   resource_group_name = azurerm_resource_group.imported.name
-  vm_size = "Standard_D2s_v3"
+  vm_size             = var.vm_size
 
-  network_interface_ids = [
-    "/subscriptions/16a1a756-aaf0-4c8b-9e40-00000000000/resourceGroups/tf/providers/Microsoft.Network/networkInterfaces/terraform-machine287"
-  ]
+  network_interface_ids = [var.network_interface_id]
 
   os_profile {
-    computer_name  = "terraform-machine"
-    admin_username = "ganesh"
+    computer_name  = var.vm_name
+    admin_username = var.admin_username
   }
 
   os_profile_linux_config {
@@ -56,6 +54,3 @@ resource "azurerm_virtual_machine" "imported" {
     name = "tf"
   }
 }
-
-
-
