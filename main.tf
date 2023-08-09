@@ -6,9 +6,6 @@ terraform {
     }
   }
 }
-# provider "azurerm" {
-#   features {}
-#   }
 
 provider "azurerm" {
   features {}
@@ -28,7 +25,7 @@ resource "azurerm_virtual_machine" "imported" {
   vm_size = "Standard_D2s_v3"
 
   network_interface_ids = [
-    "/subscriptions/16a1a756-aaf0-4c8b-9e40-c890ecc0ef6e/resourceGroups/tf/providers/Microsoft.Network/networkInterfaces/terraform-machine287"
+    "/subscriptions/16a1a756-aaf0-4c8b-9e40-00000000000/resourceGroups/tf/providers/Microsoft.Network/networkInterfaces/terraform-machine287"
   ]
 
   os_profile {
@@ -60,49 +57,5 @@ resource "azurerm_virtual_machine" "imported" {
   }
 }
 
-# # Import existing Azure VM and related resources
-# terraform {
-#   required_providers {
-#     azurerm = {
-#       source = "hashicorp/azurerm"
-#       version = ">=2.0"
-#     }
-#   }
-# }
-
-# Manually import the existing resources using 'terraform import' command
 
 
-
-
-
-# resource "azurerm_resource_group" "tf" {
-#   name     = "tf"
-#   location = "Central india"
-# }
-
-
-# resource "azurerm_virtual_network" "main" {
-#   name                = "terraform-machine-vnet/default"
-#   address_space       = ["10.0.0.0/16"]
-#   location            = azurerm_resource_group.tf.location
-#   resource_group_name = azurerm_resource_group.tf.name
-# }
-
-# resource "azurerm_subnet" "internal" {
-#   name                 = "internal"
-#   resource_group_name  = azurerm_resource_group.tf.name
-#   virtual_network_name = azurerm_virtual_network.main.name
-#   address_prefixes     = ["10.0.2.0/24"]
-# }
-# resource "azurerm_network_interface" "main" {
-#   name                = "terraform-machine287"
-#   location            = azurerm_resource_group.tf.location
-#   resource_group_name = azurerm_resource_group.tf.name
-
-#   ip_configuration {
-#     name                          = "testconfiguration1"
-#     subnet_id                     = azurerm_subnet.internal.id
-#     private_ip_address_allocation = "Dynamic"
-#   }
-# }
