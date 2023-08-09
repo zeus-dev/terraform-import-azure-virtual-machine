@@ -25,5 +25,5 @@ variable "admin_username" {
 
 variable "network_interface_id" {
   description = "Network interface ID for the virtual machine"
-  default     = "/subscriptions/16a1a756-aaf0-4c8b-9e40-c890ecc0ef6e/resourceGroups/tf/providers/Microsoft.Network/networkInterfaces/terraform-machine287"
+  default     = "/subscriptions/16a1a756-aaf0-4c8b-9e40-000000000000/resourceGroups/tf/providers/Microsoft.Network/networkInterfaces/terraform-machine287"
 }
